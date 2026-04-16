@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
+  
+  <!-- Meta Tags SEO / Open Graph -->
+  <title>ALEXIA MELUSINE | ALMAS DE POMBAGIRA</title>
+  <meta name="description" content="Direção de arte visceral e o arquétipo do feminino proibido. Não é apenas um link, é um rito de passagem. Toque e desça ao Vortex. Laroyê.">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pombagiras.github.io/melusine-oficial/">
+  <meta property="og:title" content="ALEXIA MELUSINE | ALMAS DE POMBAGIRA">
+  <meta property="og:description" content="Direção de arte visceral e o arquétipo do feminino proibido. Não é apenas um link, é um rito de passagem. Toque e desça ao Vortex. Laroyê.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pombagiras/melusine-oficial/refs/heads/main/Ale%20Ultra%20(1).png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ALEXIA MELUSINE | ALMAS DE POMBAGIRA">
+  <meta name="twitter:description" content="Não é apenas um link, é um rito de passagem. Direção de arte visceral e o feminino proibido. Laroyê.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/pombagiras/melusine-oficial/refs/heads/main/Ale%20Ultra%20(1).png">
+  
+  <!-- Favicon personalizado -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      min-height: 100vh;
+      background: #050505;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* FUNDO TRANSLÚCIDO COM CAPA - EFEITO VIDRO */
+    .bento-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* ⚠️ SUBSTITUA O LINK ABAIXO PELO URL CORRETO DA SUA IMAGEM */
+      background-image: url('URL_DA_SUA_IMAGEM_AQUI');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+    
+    /* SOBREPOSIÇÃO PARA GARANTIR LEGIBILIDADE E EFEITO VIDRO */
+    .bento-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: -1;
+    }
+    
+    /* CASO A IMAGEM NÃO CARREGUE, DEGRADÊ DE FALBACK */
+    .bento-bg.fallback {
+      background: radial-gradient(circle at 30% 10%, rgba(60, 20, 35, 0.8) 0%, #050505 95%);
+    }
+    
+    .bento-grid {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin: 20px 0 24px 0;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    h1 {
+      font-family: 'Syncopate', sans-serif;
+      font-size: clamp(1.2rem, 7vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 6px;
+      background: linear-gradient(135deg, #f5e6d3 0%, #c97e5a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .sub {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: rgba(255,200,180,0.9);
+      margin-top: 8px;
+      font-weight: 300;
+    }
+    
+    /* BOTÃO PARA REVELAR GALERIA */
+    .reveal-vortex-btn {
+      width: 100%;
+      background: linear-gradient(95deg, #2c1a12, #1f0f08);
+      border: 1px solid #b67b47;
+      padding: 18px 12px;
+      border-radius: 60px;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: #ffebd2;
+      text-align: center;
+      margin: 8px 0 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      touch-action: manipulation;
+    }
+    
+    .reveal-vortex-btn:active {
+      transform: scale(0.97);
+      background: linear-gradient(95deg, #3e251b, #2e1810);
+    }
+    
+    /* GALERIA BENTO - INICIALMENTE OCULTA */
+    .gallery-bento {
+      background: rgba(10, 10, 10, 0.5);
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 20px 12px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease, margin 0.3s;
+      margin-bottom: 0;
+      padding: 0 12px;
+    }
+    
+    .gallery-bento.revealed {
+      max-height: 2000px;
+      opacity: 1;
+      margin-bottom: 28px;
+      padding: 20px 12px;
+    }
+    
+    .gallery-title {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d9b48b;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+    }
+    
+    .gallery-bento.revealed .gallery-title {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .devices {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .photo-card {
+      width: calc(33.33% - 12px);
+      min-width: 100px;
+      aspect-ratio: 3 / 4;
+      background: #0a0a0a;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,215,180,0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.92) translateY(15px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .gallery-bento.revealed .photo-card {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    
+    .gallery-bento.revealed .photo-card:nth-child(1) { transition-delay: 0.02s; }
+    .gallery-bento.revealed .photo-card:nth-child(2) { transition-delay: 0.05s; }
+    .gallery-bento.revealed .photo-card:nth-child(3) { transition-delay: 0.08s; }
+    .gallery-bento.revealed .photo-card:nth-child(4) { transition-delay: 0.11s; }
+    .gallery-bento.revealed .photo-card:nth-child(5) { transition-delay: 0.14s; }
+    .gallery-bento.revealed .photo-card:nth-child(6) { transition-delay: 0.17s; }
+    .gallery-bento.revealed .photo-card:nth-child(7) { transition-delay: 0.20s; }
+    .gallery-bento.revealed .photo-card:nth-child(8) { transition-delay: 0.23s; }
+    .gallery-bento.revealed .photo-card:nth-child(9) { transition-delay: 0.26s; }
+    
+    .photo-card:active {
+      transform: scale(0.96);
+      transition: 0.05s;
+    }
+    
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(70%) contrast(1.2) brightness(0.8);
+      transition: 0.3s;
+      pointer-events: none;
+    }
+    
+    /* Modal de imagem expandida */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    
+    .image-modal.active {
+      opacity: 1;
+    }
+    
+    .modal-img {
+      max-width: 90%;
+      max-height: 85%;
+      object-fit: contain;
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      border: 2px solid rgba(210, 140, 100, 0.5);
+      transition: transform 0.1s ease;
+    }
+    
+    @keyframes shakeMobile {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      20% { transform: translate(-3px, 1px) rotate(-0.8deg); }
+      40% { transform: translate(3px, -2px) rotate(0.8deg); }
+      60% { transform: translate(-2px, 2px) rotate(-0.5deg); }
+      80% { transform: translate(2px, -1px) rotate(0.5deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+    
+    .shake-effect {
+      animation: shakeMobile 0.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
+    }
+    
+    /* Accordion */
+    .accordion-section {
+      background: rgba(15, 15, 15, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,200,180,0.15);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      background: rgba(0,0,0,0.4);
+      cursor: pointer;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: #ecd9c2;
+      transition: 0.2s;
+      touch-action: manipulation;
+    }
+    
+    .accordion-header:active {
+      background: rgba(80, 50, 40, 0.5);
+    }
+    
+    .accordion-header span {
+      font-size: 1.6rem;
+      font-weight: 300;
+      transition: transform 0.3s ease;
+      color: #c9a87b;
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+      padding: 0 20px;
+    }
+    
+    .accordion-content-inner {
+      padding: 0 0 20px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #dddddd;
+      font-weight: 300;
+    }
+    
+    .accent-text {
+      color: #e4b384;
+      font-weight: 400;
+    }
+    
+    /* BOTÃO VORTEX - GLASSMORPHISM ROXO AVERMELHADO */
+    .vortex-btn {
+      width: 100%;
+      padding: 18px 12px;
+      border-radius: 60px;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-align: center;
+      margin: 20px 0 12px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      background: linear-gradient(135deg, rgba(120, 40, 70, 0.65), rgba(70, 25, 55, 0.8), rgba(40, 15, 35, 0.9));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(220, 120, 140, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(180, 70, 110, 0.3);
+      color: #ffefdf;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .vortex-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 200, 220, 0.25), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .vortex-btn:hover::before,
+    .vortex-btn:active::before {
+      left: 100%;
+    }
+    
+    .vortex-btn:active {
+      transform: scale(0.97);
+      background: linear-gradient(135deg, rgba(100, 30, 60, 0.8), rgba(55, 18, 45, 0.9));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    
+    .footer-phrase {
+      font-family: 'Inter', sans-serif;
+      font-weight: 200;
+      font-size: clamp(0.6rem, 3.5vw, 0.8rem);
+      letter-spacing: 2px;
+      color: rgba(255,255,245,0.7);
+      text-align: center;
+      padding: 24px 10px 30px;
+      animation: breath 5s infinite ease-in-out;
+      border-top: 1px dashed rgba(255,200,180,0.2);
+      margin-top: 10px;
+    }
+    
+    @keyframes breath {
+      0%, 100% { opacity: 0.4; letter-spacing: 2px; }
+      50% { opacity: 1; letter-spacing: 3px; text-shadow: 0 0 5px rgba(210,140,100,0.5); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 480px) {
+      .bento-grid { padding: 12px 12px 30px; }
+      .photo-card { min-width: 90px; }
+    }
+  </style>
+</head>
+<body>
+<div class="bento-bg" id="dynamicBg"></div>
+
+<div class="bento-grid">
+  
+  <div class="hero-section">
+    <h1>ALEXIA MELUSINE</h1>
+    <div class="sub">✦ ALMAS DE POMBAGIRA ✦</div>
+  </div>
+  
+  <div class="reveal-vortex-btn" id="revealGalleryBtn">🌑 REVELAR RETRATOS DO VORTEX 🌑</div>
+  
+  <div class="gallery-bento" id="vortexGallery">
+    <div class="gallery-title">⚘ RETRATOS DO VORTEX ⚘</div>
+    <div class="devices" id="gallery">
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/Al%C3%AA%20(2).png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/Al%C3%AA%20(2).png" alt="Melusine 1">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/Al%C3%AA%20(3).png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/Al%C3%AA%20(3).png" alt="Melusine 2">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2023%20de%20dez.%20de%202025%2C%2013_50_31.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2023%20de%20dez.%20de%202025%2C%2013_50_31.png" alt="Melusine 3">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2015_41_02.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2015_41_02.png" alt="Melusine 4">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_32_47.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_32_47.png" alt="Melusine 5">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2017_49_49.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2017_49_49.png" alt="Melusine 6">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_34_32.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_34_32.png" alt="Melusine 7">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_36_45.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025_12_2025%2C%2017_36_45.png" alt="Melusine 8">
+      </div>
+      <div class="photo-card" data-img="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2017_46_21.png">
+        <img src="https://raw.githubusercontent.com/alexialuzdeferro/card-photos/refs/heads/main/ChatGPT%20Image%2025%20de%20dez.%20de%202025%2C%2017_46_21.png" alt="Melusine 9">
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-section">
+    <div class="accordion-header" data-target="content1">
+      🌙 O ARQUÉTIPO DO FEMININO PROIBIDO <span>+</span>
+    </div>
+    <div class="accordion-content" id="content1">
+      <div class="accordion-content-inner">
+        <p><span class="accent-text">Melusine</span> não é apenas uma musa: é o <strong>espelho onde o sagrado e o profano dançam</strong>. Criatura da meia-noite, soberana das águas turvas. Nesta direção de arte visceral, o feminino se ergue como rito de passagem — <em>não se domina, se reverencia</em>.</p>
+        <p>Alexia Melusine materializa o arquétipo da Pombagira: poder, doçura feroz, encanto que despedaça correntes. Laroyê! 🔥</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-section">
+    <div class="accordion-header" data-target="content2">
+      🖤 RITUAL VISUAL & VORTEX <span>+</span>
+    </div>
+    <div class="accordion-content" id="content2">
+      <div class="accordion-content-inner">
+        <p>Fotografia, estética noturna, tons terrosos e vermelho velado. <span class="accent-text">"Onde o reflexo termina, Alexia Melusine começa"</span> — cada imagem é um selo de transmutação. Silêncio entre o que se vê e o que se esconde.</p>
+        <p>O <strong>Vortex</strong> é o portal para a estética das almas livres, onde a beleza grita sem perder o mistério.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-section">
+    <div class="accordion-header" data-target="content3">
+      🔥 ALMAS DE POMBAGIRA <span>+</span>
+    </div>
+    <div class="accordion-content" id="content3">
+      <div class="accordion-content-inner">
+        <p>Pombagira: guardiã das encruzilhadas, fogo que conserne e liberta. Alexia canaliza essa força em cada projeto, quebrando o olhar domesticado sobre o corpo, a arte e o desejo. <strong>Laroyê Exu Mulher!</strong></p>
+        <p>Toque nas imagens, sinta a vibração, desça ao seu próprio centro. <span class="accent-text">"Não é apenas um link, é um rito."</span></p>
+      </div>
+    </div>
+  </div>
+  
+  <a href="https://bio.site/AlmasdePombagira" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;" id="vortexLink">
+    <div class="vortex-btn" id="vortexBtn">⟁ ACESSAR O VORTEX ⟁</div>
+  </a>
+  
+  <div class="footer-phrase">
+    Onde o reflexo termina, <span style="color:#e4b384;">Alexia Melusine</span> começa: <br>
+    a arquitetura do silêncio entre <span style="color:#e4b384;">o que se vê e o que se esconde.</span>
+  </div>
+</div>
+
+<script>
+  // HAPTIC FEEDBACK
+  function triggerHaptic(intensity = 12) {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(intensity);
+    } else {
+      const active = document.activeElement;
+      if (active && active.style) {
+        active.style.transform = 'scale(0.98)';
+        setTimeout(() => { if(active) active.style.transform = ''; }, 100);
+      }
+    }
+  }
+  
+  function applyShakeToElement(element) {
+    if (!element) return;
+    element.classList.add('shake-effect');
+    setTimeout(() => {
+      element.classList.remove('shake-effect');
+    }, 260);
+  }
+  
+  // FUNDO COM VERIFICAÇÃO DE CARREGAMENTO DA IMAGEM
+  const bgElement = document.getElementById('dynamicBg');
+  const imagemURL = 'https://raw.githubusercontent.com/pombagiras/melusine-oficial/refs/heads/main/Cavpa%20(4).jpeg'; // ⚠️ COLOQUE AQUI O LINK CORRETO DA SUA CAPA
+  
+  function testImage(url) {
+    const img = new Image();
+    img.onload = () => {
+      bgElement.style.backgroundImage = `url('${url}')`;
+      bgElement.classList.remove('fallback');
+    };
+    img.onerror = () => {
+      bgElement.classList.add('fallback');
+      console.warn('Imagem de fundo não carregou. Usando degradê de fallback.');
+    };
+    img.src = url;
+  }
+  
+  if (imagemURL !== 'URL_DA_SUA_IMAGEM_AQUI') {
+    testImage(imagemURL);
+  } else {
+    bgElement.classList.add('fallback');
+  }
+  
+  // REVELAR GALERIA
+  const revealBtn = document.getElementById('revealGalleryBtn');
+  const galleryBento = document.getElementById('vortexGallery');
+  let galleryRevealed = false;
+  
+  if (revealBtn && galleryBento) {
+    revealBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      triggerHaptic(15);
+      applyShakeToElement(revealBtn);
+      
+      if (!galleryRevealed) {
+        galleryBento.classList.add('revealed');
+        galleryRevealed = true;
+        revealBtn.textContent = '🌀 RETRATOS REVELADOS 🌀';
+        revealBtn.style.background = "linear-gradient(95deg, #3a251b, #2a1710)";
+        setTimeout(() => {
+          galleryBento.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      } else {
+        applyShakeToElement(galleryBento);
+      }
+    });
+  }
+  
+  // MODAL DE IMAGEM
+  function createModal(imageSrc) {
+    const existingModal = document.querySelector('.image-modal');
+    if (existingModal) existingModal.remove();
+    
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.className = 'modal-img';
+    modal.appendChild(img);
+    document.body.appendChild(modal);
+    
+    setTimeout(() => modal.classList.add('active'), 10);
+    
+    const closeModal = () => {
+      modal.classList.remove('active');
+      setTimeout(() => modal.remove(), 250);
+      triggerHaptic(8);
+    };
+    
+    modal.addEventListener('click', closeModal);
+    applyShakeToElement(modal);
+    setTimeout(() => {
+      if (img) applyShakeToElement(img);
+    }, 50);
+    
+    if ('vibrate' in navigator) {
+      navigator.vibrate([20, 30, 15]);
+    }
+  }
+  
+  function bindGalleryClicks() {
+    const cards = document.querySelectorAll('.photo-card');
+    cards.forEach(card => {
+      card.removeEventListener('click', card._clickHandler);
+      const imgSrc = card.querySelector('img')?.src;
+      if (imgSrc) {
+        const handler = (e) => {
+          e.stopPropagation();
+          triggerHaptic(18);
+          applyShakeToElement(card);
+          createModal(imgSrc);
+        };
+        card.addEventListener('click', handler);
+        card._clickHandler = handler;
+      }
+    });
+  }
+  
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class' && galleryBento.classList.contains('revealed')) {
+        bindGalleryClicks();
+      }
+    });
+  });
+  if (galleryBento) observer.observe(galleryBento, { attributes: true });
+  if (galleryBento && galleryBento.classList.contains('revealed')) bindGalleryClicks();
+  
+  // ACCORDION
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  function closeAllAccordions(exceptId = null) {
+    document.querySelectorAll('.accordion-content').forEach(content => {
+      if (exceptId !== content.id) {
+        content.style.maxHeight = null;
+        const header = document.querySelector(`.accordion-header[data-target="${content.id}"]`);
+        if (header) {
+          const span = header.querySelector('span');
+          if (span) span.textContent = '+';
+        }
+      }
+    });
+  }
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerHaptic(12);
+      applyShakeToElement(header);
+      
+      const targetId = header.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      if (!targetContent) return;
+      
+      const isOpen = targetContent.style.maxHeight && targetContent.style.maxHeight !== '0px';
+      
+      if (!isOpen) {
+        closeAllAccordions(targetId);
+        targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+        const span = header.querySelector('span');
+        if (span) span.textContent = '−';
+      } else {
+        targetContent.style.maxHeight = null;
+        const span = header.querySelector('span');
+        if (span) span.textContent = '+';
+      }
+    });
+  });
+  
+  const vortexLink = document.getElementById('vortexLink');
+  if (vortexLink) {
+    vortexLink.addEventListener('click', (e) => {
+      triggerHaptic(20);
+      applyShakeToElement(vortexLink.querySelector('.vortex-btn'));
+    });
+  }
+  
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.accordion-content').forEach(content => {
+      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+  
+  console.log('🌹 Melusine OS | Fundo vítreo com capa — vidro transparente aplicado');
+</script>
+</body>
+</html>
